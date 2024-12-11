@@ -10,7 +10,7 @@ class BrandSpravController extends Controller
 {
     public function index()
     {
-        $brands = Image::select('brand')->distinct('brand')->paginate(10);
+        $brands = Image::select('brand')->distinct('brand')->paginate(30);
         return view("brand", compact("brands"));
     }
     public function view($brand)

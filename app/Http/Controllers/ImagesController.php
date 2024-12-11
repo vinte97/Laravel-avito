@@ -38,7 +38,7 @@ class ImagesController extends Controller
         }
 
         // Пагинация с 10 записями на странице
-        $images = $query->paginate(20);
+        $images = $query->paginate(40);
 
         return view('images.view', compact('images'));
     }
