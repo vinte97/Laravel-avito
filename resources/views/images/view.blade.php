@@ -29,10 +29,10 @@
                     <!-- Форма фильтрации -->
                     <form method="GET" action="{{ route('images.view') }}" class="mb-4 flex gap-4">
                         <input type="text" name="brand" placeholder="Бренд" value="{{ request('brand') }}"
-                            class="border text-black rounded p-2 w-1/3">
+                            class="border text-black rounded p-2 w-1/3" style="color: black;">
 
                         <input type="text" name="article" placeholder="Артикул" value="{{ request('article') }}"
-                            class="border text-black rounded p-2 w-1/3">
+                            class="border text-black rounded p-2 w-1/3" style="color: black;">
 
                         <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
                             Применить
