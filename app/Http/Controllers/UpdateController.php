@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class UpdateController extends Controller
 {
+
     public function index()
     {
         $timeXML = Update::where('file', '=', 1)->first();
@@ -20,6 +21,7 @@ class UpdateController extends Controller
     }
     public function updateXML()
     {
+        set_time_limit(3600);
         try {
             echo 'Выполнение обновление файла XML';
             ini_set('max_execution_time', 0); // Без ограничения по времени
@@ -81,6 +83,7 @@ class UpdateController extends Controller
 
     private function processXML(&$xml)
     {
+        set_time_limit(3600);
         foreach ($xml->Ad as $ad) {
             Log::info('Обрабатываем Ad ID: ' . (string) $ad->Id);
             $adId = explode('_', (string) $ad->Id);
@@ -185,6 +188,7 @@ class UpdateController extends Controller
 
     public function updateYaml()
     {
+        set_time_limit(3600);
         try {
             echo 'Выполнение обновление файла YAML';
             ini_set('max_execution_time', 0); // Убрать ограничения на выполнение
@@ -252,6 +256,7 @@ class UpdateController extends Controller
 
     private function processOffers(&$offers)
     {
+        set_time_limit(3600);
         foreach ($offers->offer as $offer) {
             $id = (string) $offer['id'];
             [$articul, $brand] = explode('/', $id);
