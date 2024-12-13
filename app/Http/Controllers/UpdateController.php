@@ -15,8 +15,8 @@ class UpdateController extends Controller
 
     public function index()
     {
-        $timeXML = Update::where('file', '=', 1)->first();
-        $timeYAML = Update::where('file', '=', 2)->first();
+        $timeXML = Update::find(1);
+        $timeYAML = Update::find(2);
         return view('update', compact('timeXML', 'timeYAML'));
     }
     public function updateXML()
@@ -68,10 +68,11 @@ class UpdateController extends Controller
 
             Storage::disk('public')->put($fileName, $xmlContent);
             Log::info('Объединенный XML успешно сохранен');
-            Update::updateOrCreate([
-                'file' => 1,
-                'date_update' => now()
-            ]);
+            $update = Update::find(1);
+            if ($update) {
+                $update->date_update = now();
+                $update->save();
+            }
 
             return redirect()->route('update')->with('success', 'Объединенный XML успешно сохранен!');
         } catch (\Exception $e) {
@@ -242,10 +243,11 @@ class UpdateController extends Controller
             Storage::disk('public')->put($fileName, $yamlContent);
 
             Log::info('Объединенный YAML успешно сохранен');
-            Update::updateOrCreate([
-                'file' => 2,
-                'date_update' => now()
-            ]);
+            $update = Update::find(2);
+            if ($update) {
+                $update->date_update = now();
+                $update->save();
+            }
             return redirect()->route('update')->with('success', 'Объединенный YAML успешно сохранен!');
         } catch (\Exception $e) {
             Log::error('Ошибка в updateYaml: ' . $e->getMessage());
