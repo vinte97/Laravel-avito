@@ -103,7 +103,7 @@
 
                 document.getElementById('btn-add').style.display = 'block'; // Отображаем кнопку "Добавить"
             } else {
-                showAlert('Папка или файлы не выбраны. Выберите!', 'warning');
+                showAlert('Папка или файлы не выбраны. Выберите!', 'red');
             }
         }
 
@@ -114,7 +114,7 @@
                     element.value = input;
                 });
             } else {
-                showAlert('Поле не должно быть пустым!', 'danger');
+                showAlert('Поле не должно быть пустым!', 'red');
             }
         }
 
@@ -173,23 +173,23 @@
                         return response.json();
                     })
                     .then(data => {
-                        showAlert('Файлы успешно добавлены!', 'success');
+                        showAlert('Файлы успешно добавлены!', 'green');
                         form.reset();
                         document.getElementById('files').innerHTML = '';
                     })
                     .catch(error => {
                         console.error('Ошибка:', error);
-                        showAlert(`Ошибка: ${error.message}`, 'danger');
+                        showAlert(`Ошибка: ${error.message}`, 'red');
                     });
             }).catch(error => {
                 console.error('Ошибка преобразования файлов:', error);
-                showAlert('Ошибка преобразования файлов в Base64.', 'danger');
+                showAlert('Ошибка преобразования файлов в Base64.', 'red');
             });
         }
 
         function showAlert(message, type = 'warning') {
             const alertBox = document.getElementById('alert-box');
-            alertBox.className = `alert alert-${type} show`;
+            alertBox.className = `bg-${type}-500 text-white p-4 rounded mb-4`;
             alertBox.innerHTML = `<i class="bi bi-exclamation-triangle-fill"></i> ${message}`;
             alertBox.classList.remove('d-none');
 
