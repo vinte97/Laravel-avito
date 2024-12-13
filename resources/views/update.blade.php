@@ -11,13 +11,13 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="text-2xl font-bold mb-6">Обновление файлов</h1>
                     @if (session('success'))
-                        <div class="alert alert-success">
+                        <div class="bg-green-500 text-white p-4 rounded mb-4">
                             {{ session('success') }}
                         </div>
                     @endif
 
                     @if (session('error'))
-                        <div class="alert alert-danger">
+                        <div class="bg-red-500 text-white p-4 rounded mb-4">
                             {{ session('error') }}
                         </div>
                     @endif
