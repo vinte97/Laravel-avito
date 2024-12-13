@@ -157,7 +157,7 @@ class ImagesController extends Controller
             $image = Image::find($id);
 
             if ($image) {
-                $filePath = mb_strtolower('uploads/app/public' . $image->brand . '/' . $image->articul);
+                $filePath = 'uploads/app/public' . $image->brand . '/' . $image->articul;
                 if (Storage::disk('public')->exists($filePath)) {
                     if (Storage::disk('public')->delete($filePath)) {
                         $image->delete();
@@ -179,7 +179,7 @@ class ImagesController extends Controller
             foreach ($request->deleteM as $delete) {
                 $image = Image::find($delete);
                 if ($image) {
-                    $filePath = mb_strtolower('uploads/app/public/' . $image->brand . '/' . $image->articul);
+                    $filePath = 'uploads/app/public/' . $image->brand . '/' . $image->articul;
                     if (Storage::disk('public')->exists($filePath)) {
                         if (Storage::disk('public')->delete($filePath)) {
                             $image->delete();
