@@ -33,8 +33,7 @@ class UpdateController extends Controller
             if (!$response1->ok()) {
                 throw new \Exception('Ошибка при загрузке первого XML: ' . $response1->status());
             }
-
-            $xmlContent1 = str_replace('&nbsp;', ' ', $response1->body());
+            $xmlContent1 = str_replace(['&ndash;', '&nbsp;'], ['&#8211;', '&#160;'], $response1->body());
             $xml1 = simplexml_load_string($xmlContent1);
 
             // 2. Загрузка второго XML
@@ -46,7 +45,7 @@ class UpdateController extends Controller
                 throw new \Exception('Ошибка при загрузке второго XML: ' . $response2->status());
             }
 
-            $xmlContent2 = str_replace('&nbsp;', ' ', $response2->body());
+            $xmlContent2 = str_replace(['&ndash;', '&nbsp;'], ['&#8211;', '&#160;'], $response2->body());
             $xml2 = simplexml_load_string($xmlContent2);
 
             // 3. Обработка первого XML
