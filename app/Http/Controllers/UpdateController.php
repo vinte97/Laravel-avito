@@ -27,7 +27,7 @@ class UpdateController extends Controller
             ini_set('max_execution_time', 0); // Без ограничения по времени
             // 1. Загрузка первого XML
             Log::info('Загрузка первого XML начата');
-            $response1 = Http::withoutVerifying()->get('https://prdownload.nodacdn.net/dfiles/7da749ad-284074-7b2184d7/articles.xml');
+            $response1 = Http::withoutVerifying()->timeout(3600)->get('https://prdownload.nodacdn.net/dfiles/7da749ad-284074-7b2184d7/articles.xml');
             Log::info('Загрузка первого XML завершена');
 
             if (!$response1->ok()) {
@@ -39,7 +39,7 @@ class UpdateController extends Controller
 
             // 2. Загрузка второго XML
             Log::info('Загрузка второго XML начата');
-            $response2 = Http::withoutVerifying()->get('https://www.buszap.ru/get_price?p=28eb21146a7944a9abd330fbf916aa7c&FranchiseeId=9117065');
+            $response2 = Http::withoutVerifying()->timeout(3600)->get('https://www.buszap.ru/get_price?p=28eb21146a7944a9abd330fbf916aa7c&FranchiseeId=9117065');
             Log::info('Загрузка второго XML завершена');
 
             if (!$response2->ok()) {
