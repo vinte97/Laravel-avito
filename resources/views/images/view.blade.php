@@ -135,6 +135,14 @@
             document.getElementById('view-image').src = imageUrl;
             document.getElementById('view-modal').classList.remove('hidden');
         }
+        // Закрытие модалки при клике вне её содержимого
+        document.querySelectorAll('[id$="-modal"]').forEach(modal => {
+            modal.addEventListener('click', function(event) {
+                if (event.target === this) {
+                    closeModal(this.id);
+                }
+            });
+        });
 
         // Показать модалку удаления
         function showDeleteModal(deleteUrl) {
