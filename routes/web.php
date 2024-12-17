@@ -52,8 +52,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('brands/{id}/clear', [BrandSpravController::class, 'clear'])->name('brands.clear');
 
     Route::get('/update', [UpdateController::class, 'index'])->name('update');
-    Route::get('/updateXML', [UpdateController::class, 'updateXML'])->name('updateXML');
-    Route::get('/updateYaml', [UpdateController::class, 'updateYaml'])->name('updateYaml');
 });
+
+Route::get('/updateXML', [UpdateController::class, 'updateXML'])->name('updateXML');
+Route::get('/updateYaml', [UpdateController::class, 'updateYaml'])->name('updateYaml');
 
 require __DIR__ . '/auth.php';

@@ -23,6 +23,7 @@ class UpdateController extends Controller
     {
         set_time_limit(3600);
         ini_set('max_execution_time', '3600');
+        ini_set('max_input_time', '3600');
         try {
             echo 'Выполнение обновление файла XML';
             ini_set('max_execution_time', 0); // Без ограничения по времени
