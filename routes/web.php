@@ -57,4 +57,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/updateXML', [UpdateController::class, 'updateXML'])->name('updateXML');
 Route::get('/updateYaml', [UpdateController::class, 'updateYaml'])->name('updateYaml');
 
+Route::get('/phpInfo', function () {
+    phpinfo();
+});
+
 require __DIR__ . '/auth.php';
