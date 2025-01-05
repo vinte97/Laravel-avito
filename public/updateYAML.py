@@ -8,8 +8,8 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 DB_CONFIG = {
     'host': 'localhost',
-    'user': 'root',
-    'password': '',
+    'user': 'uploader',
+    'password': 'uploader',
     'database': 'avito'
 }
 
